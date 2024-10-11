@@ -30,7 +30,7 @@ This is a MERN stack application that allows users to upload employee details al
 
 ## Setup Instructions
 
-### Prerequisites
+### Prerequisitesw
 
 1. **Node.js**: Ensure you have Node.js installed on your machine. You can download it from [Node.js official website](https://nodejs.org/).
 2. **MongoDB**: Set up a MongoDB database. You can use a local instance or a cloud service like MongoDB Atlas.
@@ -39,5 +39,5 @@ This is a MERN stack application that allows users to upload employee details al
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/employee-upload.git
-cd employee-upload
+git clone https://github.com/remiges-tejas/Cloudinary-File-Upload-MERN.git
+cd Cloudinary-File-Upload-MERN
