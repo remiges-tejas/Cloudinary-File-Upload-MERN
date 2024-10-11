@@ -4,12 +4,18 @@ const express = require('express');
 const multer = require('multer');
 const cloudinary = require('../config/cloudinary');
 const Employee = require('../models/Employee');
+const fs = require('fs'); // File system module
 
 const router = express.Router();
 const upload = multer({ dest: 'uploads/' }); // Temporary storage
 
 router.post('/upload', upload.single('avatar_img'), async (req, res) => {
   try {
+    // Check if file is uploaded
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+
     // Upload image to Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
 
@@ -23,8 +29,18 @@ router.post('/upload', upload.single('avatar_img'), async (req, res) => {
     });
 
     await employee.save();
+
+    // Clean up temporary file after successful upload
+    fs.unlinkSync(req.file.path); // Remove the temporary file
+
     res.status(201).json(employee);
   } catch (error) {
+    // Clean up temporary file if upload fails
+    if (req.file) {
+      fs.unlinkSync(req.file.path); // Remove the temporary file
+    }
+    
+    console.error(error);
     res.status(500).json({ error: 'Upload failed' });
   }
 });
