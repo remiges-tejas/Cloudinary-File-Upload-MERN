@@ -9,6 +9,7 @@ This is a MERN stack application that allows users to upload employee details al
 - [Setup Instructions](#setup-instructions)
 - [Backend API Endpoints](#backend-api-endpoints)
 - [Testing the API with Postman](#testing-the-api-with-postman)
+- [Frontend Functionality](#frontend-functionality)
 - [Production Considerations](#production-considerations)
 - [License](#license)
 
@@ -17,20 +18,24 @@ This is a MERN stack application that allows users to upload employee details al
 - User can upload employee details including username, name, age, designation, and avatar image.
 - Images are stored in Cloudinary.
 - Data is persisted in MongoDB.
-- Input validation and error handling are implemented.
-- Secure and optimized for production use.
+- Responsive UI using Tailwind CSS.
+- Loading spinner displayed while uploading data.
+- Toast notifications for successful uploads and error handling.
+- Employee list dynamically updates after new employee uploads.
 
 ## Technologies Used
 
-- **Frontend**: React
+- **Frontend**: React, Vite, Tailwind CSS
 - **Backend**: Node.js, Express
 - **Database**: MongoDB
 - **File Storage**: Cloudinary
-- **Middleware**: Multer, CORS, 
+- **Middleware**: Multer, Helmet, CORS
+- **Toast Notifications**: React Toastify
+- **Loading Spinner**: Custom CSS Spinner
 
 ## Setup Instructions
 
-### Prerequisitesw
+### Prerequisites
 
 1. **Node.js**: Ensure you have Node.js installed on your machine. You can download it from [Node.js official website](https://nodejs.org/).
 2. **MongoDB**: Set up a MongoDB database. You can use a local instance or a cloud service like MongoDB Atlas.
