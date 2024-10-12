@@ -1,8 +1,8 @@
 // src/EmployeeList.jsx
 
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Spinner from './Spinner';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Spinner from "./Spinner";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -10,11 +10,14 @@ const EmployeeList = () => {
   const [error, setError] = useState(null);
 
   const fetchEmployees = async () => {
+    // hardcoding url [not a good practice]
+    const apiUrl =
+      "https://cloudinary-file-upload-mern.onrender.com/api/employees/";
     try {
-      const response = await axios.get('http://localhost:5000/api/employees/');
+      const response = await axios.get(apiUrl);
       setEmployees(response.data);
     } catch (err) {
-      setError('Failed to fetch employees');
+      setError("Failed to fetch employees");
     } finally {
       setLoading(false);
     }
@@ -30,8 +33,15 @@ const EmployeeList = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4 p-4">
       {employees.map((employee) => (
-        <div key={employee._id} className="bg-white shadow-md rounded-lg overflow-hidden">
-          <img src={employee.avatar_img} alt={`${employee.name}'s avatar`} className="w-full h-38 object-cover" />
+        <div
+          key={employee._id}
+          className="bg-white shadow-md rounded-lg overflow-hidden"
+        >
+          <img
+            src={employee.avatar_img}
+            alt={`${employee.name}'s avatar`}
+            className="w-full h-38 object-cover"
+          />
           <div className="p-4">
             <h2 className="text-xl font-bold">{employee.name}</h2>
             <p className="text-gray-600">Username: {employee.username}</p>
